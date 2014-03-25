@@ -11,4 +11,4 @@ Homework 1: Basic Charts
 
 ## Discussion ##
 
-[DISCUSSION: Include a discussion here if required by the assignment.]
+Hello, How are you
