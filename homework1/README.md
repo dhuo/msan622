@@ -14,7 +14,7 @@ The following packages must be installed prior to running this code:
 
 ###Plot1: Scatterplot###
 
-To run this code, need to use dataset 'movies', after set up the data, we could generate the plot with the following command in R:
+To run this code, need to use dataset [movies], after set up the data, we could generate the plot with the following command in R:
 
 ```R
 scatterplot <- ggplot(movies, aes(x =budgetinthousand, y =rating,
@@ -31,6 +31,7 @@ scatterplot <- ggplot(movies, aes(x =budgetinthousand, y =rating,
 It is worth noticing from the graph generated get more density when the budget is in the lower section, and as the budget get higher, the ratings get centered in a rating range 5-8.
 And I customize this R code with group the movies by their genres and display with different colours, to make it easier to tell which one have more density in certain budget level.
 also, the geometry point shape I choose 13, and the size is 1.5. Also, I limit the x-axis by put the budget in thousands.
+
 - [scatterplot](hw1-scatter.png)
 
 ###Plot2: Bar chart###
@@ -48,8 +49,9 @@ barplot <- ggplot(movies, aes(x = genre, y= ..count..,)) +
 
 #### Discussion####
 It is obvious that the Mixed gener movie have the most counts among other movies, and the lowest counts goes to Animation.
-I used 'ylim()' to limit the range from 0 to 2000, to be able to see the zero point of the count.
-and use 'fill' to color the bars with different color by genres, consistent with the scatterplot color.
+I used [ylim()] to limit the range from 0 to 2000, to be able to see the zero point of the count.
+and use [fill] to color the bars with different color by genres, consistent with the scatterplot color.
+
 - [Barchart]{hw1-bar.png)
 
 ###Plot3: Small Multiples###
@@ -71,7 +73,7 @@ facetplot <- ggplot(movies, aes(x= budgetinthousand, y= rating))+
 
 #### Discussion####
 The graph show under different genre topics, the rating performances varied by budget. as above, the colors are consistent.
-I used 3 by 3 multiples, by 'scale_x_discrete' and color them by geners. and on the x axis, I showed the budget in thousand, which make them don't overlap each other.
+I used 3 by 3 multiples, by [scale_x_discrete] and color them by geners. and on the x axis, I showed the budget in thousand, which make them don't overlap each other.
 - [SmallMultiples](hw1-multiples.png)
 
 ###Plot4: Multi lines###
@@ -96,7 +98,8 @@ multiline <- ggplot(result,aes(x = time, y = Price, col = Stock)) +
 ```
 
 #### Discussion####
-This plot need to rearrange the data to three colomns 'time','stock','price'.So I rearrange the dataframe, and then plot them by differnt stock lines, color by different stock name use'col'.
+This plot need to rearrange the data to three colomns [time],[stock],[price].So I rearrange the dataframe, and then plot them by differnt stock lines, color by different stock name use [col].
 And as we could see the SMI stock peaked in most recent data among others.
--[Multilines](hw1-multiline.png)
+
+- [Multilines](hw1-multiline.png)
 
