@@ -78,7 +78,7 @@ I used 3 by 3 multiples, by `scale_x_discrete` and color them by geners. and on 
 
 ###Plot4: Multi lines###
 -----------------------------------------
-To generate the multi lines with the following r code:
+To generate the multi lines, use the dataset `EuStockMarkets`, and with the following r code:
 
 ```R
 eu$time <- as.numeric(eu$time)
