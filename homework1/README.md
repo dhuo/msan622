@@ -52,7 +52,7 @@ It is obvious that the Mixed gener movie have the most counts among other movies
 I used `ylim()` to limit the range from 0 to 2000, to be able to see the zero point of the count.
 and use `fill` to color the bars with different color by genres, consistent with the scatterplot color.
 
-![Barchart]{hw1-bar.png)
+![Barchart](hw1-bar.png)
 
 ###Plot3: Small Multiples###
 ----------------------------------------
