@@ -30,7 +30,7 @@ thousand_formatter <- function(x) {
 } 
 
 
-getPlot <- function(localFrame, highLight, selectGenre, dotSize= "none", alphaSize="none",colorScheme="Default") {
+getPlot <- function(localFrame, highLight="none", selectGenre="none", dotSize= "none", alphaSize="none",colorScheme="Default") {
   
   
   p <- ggplot(submovies, aes(x = as.numeric(budget), y =rating, color = mpaa, group = factor(genre)))+
@@ -112,3 +112,5 @@ getPlot <- function(localFrame, highLight, selectGenre, dotSize= "none", alphaSi
   })
 })
 # runApp()
+#library(shiny)
+#shiny::runGitHub('msan622', 'dhuo', 'homework2')
