@@ -68,8 +68,8 @@ getPlot <- function(localFrame, highLight="none", selectGenre="none", dotSize= "
       scale_color_brewer(palette = "Dark2")
   }
   else if (colorScheme == "Pastel1") {
-    localPlot <- localPlot +
-      scale_colr_brewer(palette = "Pastel1")
+    p <- p +
+      scale_color_brewer(palette = "Pastel1")
   }
   else if (colorScheme == "Pastel2") {
     p <- p  +
