@@ -33,7 +33,7 @@ thousand_formatter <- function(x) {
 getPlot <- function(localFrame, highLight="none", selectGenre="none", dotSize= "none", alphaSize="none",colorScheme="Default") {
   
   
-  p <- ggplot(submovies, aes(x = as.numeric(budget), y =rating, color = mpaa, group = factor(genre)))+
+  p <- ggplot(submovies, aes(x = as.numeric(budget), y =rating, (color= highLight), group = factor(genre)))+
     geom_point(size = dotSize, alpha = alphaSize) +
     xlab("Movies Budget in thousand") +
     ylab("Movie Rating") +
