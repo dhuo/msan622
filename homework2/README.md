@@ -50,19 +50,19 @@ The R code above will make these three changes:
 - make `budget` shown as in `k` instead of `000`
 
 
-###Visualizations###
+###Visualizations Discussion###
 ------------------------------
 About this graph, is that it can change the color of the graph through Color Scheme, also you can change the `Dot Size` and `Dot Alpha` through the sliderbar.
 According to the setting requirement, the plot is default to show all MPAA rating on the graph.And if you want to see some specific genre or MPAA rating , you could go ahead and click the corresponsing tag on the sidebar.
 
 Below is an  interface:
 
-![IMAGE](capture.png)
+![IMAGE](Capture.png)
 
 ###Customization###
 ------------------------------
 My customization is I change the `budget` and let in shown in k with out in so many zero numbers, so it is more clear to see and save space on the X-axis
-Also, I set the plot with out x major grid and with out y minor grid, which I believe will make the interface look more clear.
+.Also, I set the plot with out x major grid and with out y minor grid, which I believe will make the interface look more clear.
 and I make the x axis budget text size=12.
 About the legend, I set the position at the bottom, so it is visually more clean to see tahn on the side, it's more comparable for the dot, also, I set the direction as horizonal.
 for the `ui.r` part, I customize the width and height of the scatterplot.
