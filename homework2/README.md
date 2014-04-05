@@ -57,7 +57,7 @@ According to the setting requirement, the plot is default to show all MPAA ratin
 
 Below is an  interface:
 
-![visualization](Capture.png)
+![visualization](Capture.PNG)
 
 ###Customization###
 ------------------------------
