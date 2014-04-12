@@ -28,18 +28,16 @@ creat the data frame, and use
 
 ![technique1](bubble plot.PNG)
 
-[DISCUSSION]
+
 I used the cutomized color scheme brewer to be able to color the bubble plot, also extended the x and y axis by usethe `theme` function, and fix and locate the legend at the bottom. also use the `Regions` to sort the states to be able to intereact.
 ### Technique 2: scatterplot matrix ###
 
 
-[DISCUSSION]
 I used Population, income, illetercy and life exp to creat a parallel plot, and same, I use the color sort by regions of the 50 states, so 4 color represent four regions, and same, color scheme to contral the brewer, and region bar to control to region to be able to sort the plot. and a legen at the bottom of the plot to show the color represented for each region
 ### Technique 3: Parrelle plot ###
 
 ![technique3](parallel plot.PNG)
 
-[DISCUSSION]
 To be able to intereact with the data, I use two side bar to control, to interact with data, that is Region and color Scheme
 ### Interactivity ###
 
