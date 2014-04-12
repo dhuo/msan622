@@ -42,9 +42,9 @@ I used Population, income, illetercy and life exp to creat a parallel plot, and 
 ![technique3](parallelplot.PNG)
 
 [DISCUSSION]
-
+To be able to intereact with the data, I use two side bar to control, to interact with data, that is Region and color Scheme
 ### Interactivity ###
 
-![screenshot](screenshot.png)
+![screenshot](inter.PNG)
 
-[DISCUSSION]
+
