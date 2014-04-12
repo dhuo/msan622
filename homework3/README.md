@@ -1,4 +1,4 @@
-Homework [3]: [Multivariate]
+Homework 3: Multivariate
 ==============================
 
 | **Name**  | Dinglin Huo  |
