@@ -47,7 +47,7 @@ Also convert data to matrix frame and `order` by `frequency` level, remove `rown
 
 
 ###Bubble Plot###
-[bubbleplot](bubbleplot.PNG)
+![bubbleplot](bubbleplot.PNG)
 
 I chosed the top 20 frequency words in all three state of the union speeches, and plot them by Bubble Plot,
 I used `x-axis` as `word` and `y-axis` as `freq`, colour them by different colour, and the size of the bubbles differs as the frequency changes.
@@ -56,7 +56,7 @@ I removed the legend as there is no need for legend indicate the words,I also re
 so it's more easy to read, I removed the grid for `x-axis`, as there is no need to compare with the x-grid, since only comparing the `freq` here. so I only left the `y-grid`
 
 ### Co-Occurance Frequency Plot###
-[frequency](frequency.PNG)
+![frequency](frequency.PNG)
 
 I chosed the state of the union 2012 and state of the union 2014 script as a comparison here to plot the same word that have the highest frequency in both scripts,
 after created my new data frame, I chosed the top 20 frequency words of all three state of the union texts, and I set the `x-axis` as the `sotu2012`, while the `y-axis` as the `sotu2014`
