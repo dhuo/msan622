@@ -66,7 +66,7 @@ the coord make it 1:1 ratio, and I use`red` color and `navy` colour to contradic
 By setting the `lim()` to control no extra padding in the plot.
 ### World Cloud###
 
-![wordcloud](worldcloud.png)
+![wordcloud](wordcloud.png)
 
 I use the comparison world cloud to compare the most frequency words in either ` sotu12` and `sotu14` file, and with one on top and 
 the other on bottom, with the most frequency word showed up in the center with comparably bigger area, and smaller word represent for smaller word frequency.
