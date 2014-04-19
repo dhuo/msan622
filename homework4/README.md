@@ -64,11 +64,13 @@ I used the text plot to plot the top 20 frequency words, by setting an angle `45
 with the position set to `jitter` to avoid overlap, I include an `abline` function here to add a general trend of the words on the plot, with a `45` degree trend, with teh `ratio` set to 1/2 
 the coord make it 1:1 ratio, and I use`red` color and `navy` colour to contradict the visual feeling, make it pop out, as the `theme` function, I `bold` the line and text for `axis` .
 By setting the `lim()` to control no extra padding in the plot.
-### World Cloud###
+
+### Word Cloud###
 
 ![wordcloud](wordcloud.png)
 
 I use the comparison world cloud to compare the most frequency words in either ` sotu12` and `sotu14` file, and with one on top and 
 the other on bottom, with the most frequency word showed up in the center with comparably bigger area, and smaller word represent for smaller word frequency.
 I use the `colour_brewer` `RdBu` to generate contradictory colour, and with a `max` value set up to be able to include more words.
-
+So in my wordcloud, I have the biggest word `tax`,`rule`,`right`,`energi` for `sotu2012`, while for `sotu2014`, I have a comaprably bigger size `help`,`work`,`opportunity`.
+I believe a comparison word cloud gives more information.
