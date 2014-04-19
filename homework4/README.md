@@ -74,3 +74,6 @@ the other on bottom, with the most frequency word showed up in the center with c
 I use the `colour_brewer` `RdBu` to generate contradictory colour, and with a `max` value set up to be able to include more words.
 So in my wordcloud, I have the biggest word `tax`,`rule`,`right`,`energi` for `sotu2012`, while for `sotu2014`, I have a comaprably bigger size `help`,`work`,`opportunity`.
 I believe a comparison word cloud gives more information.
+
+
+I would like to try `manyeyes` with `IBM` but I dont quite understand how it workd, as there is a lot of pointing signs.
