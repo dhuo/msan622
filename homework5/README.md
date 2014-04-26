@@ -40,7 +40,7 @@ As you could see the implementation of Law in 1983 Jan 31 lead a sharp drop of D
 
 
 ### Technique 2: heatmap###
-![heatmap](heatmap.png)
+![heat_map](heat_map.png)
 
 I melted the dataset `SB` to my ideal subset `mydata2`, and only use the total deaths as the only variable in my heatmap. 
 - i set the heatmap color to `Spectral` from my scale ` scale_prgn()`
