@@ -54,7 +54,7 @@ scale_prgn <- function() {
         palette = "Spectral")(9),
       name = "Deaths",
       limits = c(0, 4500),
-      breaks = c(0, 4500, 500)
+      breaks = c(0, 4500,2500)
     )
   )
 }
