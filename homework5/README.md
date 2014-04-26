@@ -8,19 +8,19 @@ Homework [5]: [Time Series Visualization]
 ## Instructions ##
 
 You will need to have the following packages to run my code:
-```
+
 `ggplot2`
 `reshape2`
 `grid`
 `scales`
-```
+
 ## Discussion ##
 
 ### Arrange Dataset###
  Set the time series ID `time` `year` `month`, set `order` to these IDs, add Abbreviations to months, and build dataframe for creat plots. I melted my dataset for furthur use, so required package `reshape2`.
 
  ### Set scales to beautify the plots###
-I set scales for `scale_year`,`scale_months`,`scale_SB which is my main data frame, `scale_prgn` for continuous gradient scale, `theme_heatmap`, `theme_legend`,`theme_guide`.
+I set scales for `scale_year`,`scale_months`,`scale_SB` which is my main data frame, `scale_prgn` for continuous gradient scale, `theme_heatmap`, `theme_legend`,`theme_guide`.
 
 ### Technique 1: Time Series Stacked Area Plot###
 ![stacked_plot](stacked_plot.png)
