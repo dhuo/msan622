@@ -1,7 +1,7 @@
 library(ggplot2)
 library(shiny)
 library(grid)
-library(GGally)
+
 
 
 
@@ -13,9 +13,10 @@ loadData <- function(){
 }
 
 
-bublePlot <- function(data){
-  data.plot <- data.frame(data)
-  p <- ggplot(data.plot, aes(x = GDP.Billions.ppp,y = Freedom.from.Corruption,color = as.factor(Region),size = Population.Millions))
+BubblePlot<- function(economic_data){
+  plot <- data.frame(economic_data)
+  #Creat base plot
+  p <- ggplot(plot, aes(x = GDP.Billions.ppp,y = Freedom.from.Corruption,color = as.factor(Region),size = Population.Millions))
   p <- p + geom_point (alpha=0.6, position = 'jitter') + labs(color='Region')+ labs(size='World rank')
   anontateText<-paste("Circle area is proportional to World Rank")
   p <- p + annotate("text", x = 30, y = 4,hjust = 0.5,alpha=0.6, color = "grey40", size=4,label = anontateText)
@@ -49,11 +50,11 @@ shinyServer(function(input, output){
   
   
   
-  output$bubPlot <- renderPlot({
-    bubPlot <- bublePlot(
-      data
+  output$plot1 <- renderPlot({
+    plot1 <- BubblePlot(
+      economic_data
     )
-    print(bubPlot)
+    print(plot1)
   })
   
 
