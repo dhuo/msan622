@@ -1,7 +1,7 @@
 library(ggplot2)
 library(shiny)
 library(grid)
-
+library(scales)
 
 
 
@@ -20,7 +20,7 @@ BubblePlot<- function(economic_data){
   p <- p + geom_point (alpha=0.6, position = 'jitter') + labs(color='Region')+ labs(size='World rank')
   anontateText<-paste("Circle area is proportional to World Rank")
   p <- p + annotate("text", x = 30, y = 4,hjust = 0.5,alpha=0.6, color = "grey40", size=4,label = anontateText)
-
+  p <- p+ scale_size_discrete(guide ='none')
   p<- p + theme(panel.background = element_rect(fill = NA))
   p <- p+ theme(panel.grid.major = element_blank())
   p <- p + theme(panel.grid.minor = element_blank())
@@ -46,7 +46,7 @@ globalData<-loadData()
 shinyServer(function(input, output){
   
   cat("Press \"ESC\" to exit...\n")
-  data <- globalData
+  economic_data <- globalData
   
   
   
