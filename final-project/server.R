@@ -6,34 +6,13 @@ library(reshape)
 library(data.table)
 
 
-loadData <- function(){
-  mydata <- read.csv("index2014_data1.csv",',',na.strings="N/A", header=T,stringsAsFactors = F)
-  mydata$PopinM <- as.numeric(mydata$PopinM)
-  mydata$FDIInflowM <- as.numeric(mydata$FDIInflowM)
-  mydata$Name <- as.factor(mydata$Name)
-  mydata$Region <- as.factor(mydata$Region)
-  mydata$WorldRank <- as.numeric(mydata$WorldRank)
-  mydata$RegionRank <- as.numeric(mydata$RegionRank)
-  mydata$PropertyRights <- as.numeric(mydata$PropertyRights)
-  mydata$PChangeFrom2013 <- as.numeric(mydata$PChangeFrom2013)
-  mydata$InvestmentFreedom <- as.numeric(mydata$InvestmentFreedom)
-  mydata$IFChangeFrom2013 <- as.numeric(mydata$IFChangeFrom2013)
-  mydata$FinancialFreedom <- as.numeric(mydata$FinancialFreedom)
-  mydata$FFChangeFrom2013.1 <- as.numeric(mydata$FFChangeFrom2013.1)
-  mydata$GDPcapita<- as.numeric(mydata$GDPcapita)
-
-
-
-  return (mydata)
-}
-
 
 mydata <- read.csv("index2014_data1.csv",',',na.strings="N/A", header=T,stringsAsFactors = F)
 
 mydata$PopinM <- as.numeric(mydata$PopinM)
 mydata$FDIInflowM <- as.numeric(mydata$FDIInflowM)
-mydata$Name <- as.factor(mydata$Name)
 mydata$Region <- as.factor(mydata$Region)
+mydata$Name <- as.factor(mydata$Name)
 mydata$WorldRank <- as.numeric(mydata$WorldRank)
 mydata$RegionRank <- as.numeric(mydata$RegionRank)
 mydata$PropertyRights <- as.numeric(mydata$PropertyRights)
@@ -44,7 +23,7 @@ mydata$FinancialFreedom <- as.numeric(mydata$FinancialFreedom)
 mydata$FFChangeFrom2013.1 <- as.numeric(mydata$FFChangeFrom2013.1)
 mydata$GDPcapita<- as.numeric(mydata$GDPcapita)
 assign("mydata$PopinM", mydata$PopinM, envir=globalenv())
-assign("mydata$Name",mydata$name, envir=globalenv())
+assign("mydata$Name",mydata$Name, envir=globalenv())
 assign("mydata$Region", mydata$Region, envir= globalenv())
 assign("mydata$WorldRank", mydata$WorldRank, envir= globalenv())
 assign("mydata$RegionRank", mydata$RegionRank, envir= globalenv())
@@ -56,14 +35,13 @@ assign("mydata$IFChangeFrom2013", mydata$IFChangeFrom2013, envir=globalenv())
 assign("mydata$FinancialFreedom", mydata$FinancialFreedom, envir=globalenv())
 assign("mydata$FFChangeFrom2013.1", mydata$FFChangeFrom2013.1, envir=globalenv())
 assign("mydata$GDPcapita", mydata$GDPcapita,envir=globalenv())
-
+mydata <- data.frame(mydata)
 
 # Bubble plot
 
-getPlot<- function(data,Highlight){
+getPlot<- function(localFrame,Highlight){
   #Creat base plot
-  plot <- data.frame(data)
-  p <- ggplot(plot, aes(x = GDPcapita,y = FreedomFCorruption,color = Region))
+  p <- ggplot(localFrame, aes(x = GDPcapita,y = FreedomFCorruption,color = Region))
   p <- p + geom_point (alpha=0.6, position = 'jitter') + labs(color='Region')+xlab("GDP Per Capita")+ ylab("Freedom From Corruption Score out of 100")
   p <- p + geom_text(aes(label=Name,color=Region), hjust= 0.5,vjust=0)
   anontateText<-paste("")
@@ -105,16 +83,16 @@ multiPlot <- function(data){
 
 # let the load data share with global Data
 
-globalData<-loadData()
+globalData<-mydata
 
 # shiny Server function
 shinyServer(function(input, output){
 
   cat("Press \"ESC\" to exit...\n")
- data<- globalData
+ localFrame<- globalData
   
  getHighlight <- reactive({
-   result <- levels(data$Region)
+   result <- levels(mydata$Region)
    #         if(length(input$highlight) == 0) {
    #             return(result)
    #         }
@@ -136,7 +114,7 @@ height = 600)
   
  output$multiPlot<- renderPlot({
    multiPlot<- multiPlot(
-     data)
+     localFrame)
    print(multiPlot)
  })
 
