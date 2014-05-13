@@ -39,9 +39,13 @@ mydata <- data.frame(mydata)
 
 # Bubble plot
 
-getPlot<- function(localFrame,Highlight){
+getPlot<- function(localFrame,Highlight="None"){
   #Creat base plot
-  p <- ggplot(localFrame, aes(x = GDPcapita,y = FreedomFCorruption,color = Region))
+
+  if(Highlight =="All"){
+    
+  
+  p <- ggplot(localFrame,aes(x = GDPcapita,y = FreedomFCorruption,color = Region))
   p <- p + geom_point (alpha=0.6, position = 'jitter') + labs(color='Region')+xlab("GDP Per Capita")+ ylab("Freedom From Corruption Score out of 100")
   p <- p + geom_text(aes(label=Name,color=Region), hjust= 0.5,vjust=0)
   anontateText<-paste("")
@@ -67,6 +71,61 @@ getPlot<- function(localFrame,Highlight){
     legend.title = element_text(size = 11),
     legend.key = element_blank()
   )
+  #Brushing
+  palette <- brewer_pal(type = "qual", palette = "Set1")(6)
+  Regions <- levels(mydata$Region)
+  palette[which(!Regions %in% Highlight)] <- "#EEEEEE"
+  p <- p + scale_color_manual(values = palette)
+  }
+  
+  else{
+    if (Highlight =="Europe"){
+      localFrame <- subset(localFrame, mydata$Region=="Europe")
+    }else if(Highlight =="Middle East / North Africa"){
+      localFrame <-subset(localFrame, mydata$Region=="Middle East / North Africa")
+    }else if (Highlight =="Sub-Saharan Africa"){
+      localFrame <-subset(localFrame, mydata$Region == "Sub-Saharan Africa")
+    }else if(Highlight =="North America"){
+      localFrame <- subset(localFrame, mydata$Region=="North America")
+    }else if(Highlight =="Asia-Pacific"){
+      localFrame <- subset(localFrame, mydata$Region == "Asia-Pacific")
+    }else{
+      localFrame <- subset(localFrame, mydata$Region =="South and Central America")
+    }
+    
+    p <- ggplot(localFrame,aes(x = GDPcapita,y = FreedomFCorruption,color = Region))
+    p <- p + geom_point (alpha=0.6, position = 'jitter') + labs(color='Region')+xlab("GDP Per Capita")+ ylab("Freedom From Corruption Score out of 100")
+    p <- p + geom_text(aes(label=Name,color=Region), hjust= 0.5,vjust=0)
+    anontateText<-paste("")
+    p <- p + annotate("text", x = 500, y = 4,hjust = 0.5,alpha=0.6, color = "grey40", size=4,label = anontateText)
+    p <- p+ scale_size_discrete(guide ='none')
+    
+    # Theme
+    p <- p + theme(panel.background = element_rect(fill = NA))
+    p <- p + scale_x_continuous(limits = c(0, 102300))
+    p <- p + scale_y_continuous(limits = c(0,100))
+    p <- p+ theme(panel.grid.major = element_blank())
+    p <- p + theme(panel.grid.minor = element_blank())
+    p <- p + theme(axis.text = element_blank(),
+                   axis.title= element_text(size=18,face="bold"))
+    p <- p + theme(axis.ticks = element_blank())
+    
+    p <- p + theme(
+      legend.direction = "horizontal",
+      legend.position = "bottom",
+      legend.position = c(1, 1),
+      legend.justification = c(1, 1),
+      legend.background = element_blank(),
+      legend.title = element_text(size = 11),
+      legend.key = element_blank()
+    )
+    #Brushing
+    palette <- brewer_pal(type = "qual", palette = "Set1")(6)
+    Regions <- levels(mydata$Region)
+    palette[which(!Regions %in% Highlight)] <- "#EEEEEE"
+    p <- p + scale_color_manual(values = palette)
+    
+  }
   return (p)
 }
 
@@ -90,21 +149,13 @@ shinyServer(function(input, output){
 
   cat("Press \"ESC\" to exit...\n")
  localFrame<- globalData
-  
- getHighlight <- reactive({
-   result <- levels(mydata$Region)
-   #         if(length(input$highlight) == 0) {
-   #             return(result)
-   #         }
-   #         else {
-   return(result[which(result %in% input$Highlight)])
-   #         }
- })
  
  # Can control size if want
  output$scatterplot <- renderPlot(
-{
-  print(getPlot(getHighlight()))
+{ 
+  scatterplot <- getPlot(localFrame,
+                         input$Highlight)
+  print(scatterplot)
 }, 
 width = 600,
 height = 600)

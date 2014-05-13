@@ -15,8 +15,12 @@ shinyUI(
                           checkboxGroupInput(
                             "Hightlight",
                             "Regions:",
-                            c("Middle East / North Africa", "Sub-Saharan Africa","Europe","South and Central America",
-                              "North America","Asia-Pacific"))
+                            c("All","Middle East / North Africa", "Sub-Saharan Africa","Europe","South and Central America",
+                              "North America","Asia-Pacific"),
+                            selected = c("All","Middle East / North Africa", "Sub-Saharan Africa","Europe","South and Central America",
+                                         "North America","Asia-Pacific")
+                          
+                        )
                         ),
                        
                         mainPanel(  
