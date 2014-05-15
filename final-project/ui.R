@@ -3,43 +3,50 @@ library (shiny)
 
 shinyUI(     
   navbarPage("Countries Comparison Using Economic Indicators",
-            tabPanel("Scatter Plot",
-                      pageWithSidebar(
-                        headerPanel("Freemdom from Corruption vs. GDP Capita"),
-                        sidebarPanel( 
-                          selectInput('xUI', 'X-Axis Choice:', choices=c('GDPcapita','World.Rank','Fiscal.Freedom','FreedomFCorruption',
-                                                                  'Business.Freedom','Labor.Freedom','Monetary.Freedom')),
-                          selectInput('yUI', 'Y-Axis Choice:', choices=c('FreedomFCorruption','World.Rank','Fiscal.Freedom','GDPcapita',
-                                                                  'Business.Freedom','Labor.Freedom','Monetary.Freedom')),
-                          sliderInput("xlimUI","GDP Range:", min=0, max=102900, value=c(0.100)),
+            tabPanel("Scatter Plot",hr(),
+                      fluidPage(
+                        headerPanel("Freedom Indicators vs. GDP Capita"),
+                        
+                        plotOutput('scatterplot', width='100%', height='100%'),
+                        
+                        fluidRow( hr(),
+                          column(4,
+                                 
+                                 helpText(paste("These controls shows:",
+                                                "Y Axis to different Degree of Freedom;",
+                                                "X Aix is GDP per Capita;",
+                                                "Regions can be filtered by Regiona Name"))
+                                 ),
+                          column(3,
+                          radioButtons("yUI",
+                                      'Choice of Y-Axis :',
+                                      c('FreedomFCorruption','FiscalFreedom',
+                                                'BusinessFreedom','LaborFreedom',"InvestmentFreedom","FinancialFreedom"),
+                                      selected = c('InvestmentFreedom')
+                                      )
+                          ),
+                          column(4,
                           checkboxGroupInput(
-                            "Hightlight",
-                            "Regions:",
-                            c("All","Middle East / North Africa", "Sub-Saharan Africa","Europe","South and Central America",
+                            "Highlight",
+                            "Choice of Region:",
+                            c("Middle East / North Africa", "Sub-Saharan Africa","Europe","South and Central America / Caribbean",
                               "North America","Asia-Pacific"),
-                            selected = c("All","Middle East / North Africa", "Sub-Saharan Africa","Europe","South and Central America",
+                            selected = c("Middle East / North Africa", "Sub-Saharan Africa","Europe","South and Central America / Caribbean",
                                          "North America","Asia-Pacific")
-                          
                         )
-                        ),
-                       
-                        mainPanel(  
-                          tabPanel("scatterplot",
-                                   plotOutput('scatterplot', width='100%', height='500px'))
-                          )
-                      )
+                        )
                       ),
-            tabPanel("Multiple Plot",
-                     sidebarPanel(
-                       selectInput("MultiUI", "MultiPlot Choice :", choices=c('FreedomFCorruption','World.Rank','Fiscal.Freedom','GDPcapita',
-                                                                  'Business.Freedom','Labor.Freedom','Monetary.Freedom'))
-                       ),
-                     mainPanel("Scatter Plot Matrix", plotOutput("multiPlot", width = "100%",height = "500px" ))
-                     
-                       
-
-),
-           tabPanel("Parallel Coordinate Plot"),
+                      br()
+                      ),hr()),
+            tabPanel("Scatter Plot Matrix",
+                     headerPanel("ScatterPlot Matrix"),
+                     plotOutput("plot2")
+                       #img(src = "Rplot01.png", height = "100%", width ="100%"))
+                 ),
+           tabPanel("Parallel Coordinate Plot",hr(),
+                    headerPanel("Parallel Coordinate Matrix"),
+                    plotOutput("plot3"),width ="100%",height ="800px",br(),hr()
+                    ),
            tabPanel("Bar Plot")
 ))
 
