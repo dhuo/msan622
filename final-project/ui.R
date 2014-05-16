@@ -41,14 +41,18 @@ shinyUI(
             tabPanel("Scatter Plot Matrix",
                      headerPanel("ScatterPlot Matrix"),
                      plotOutput("plot2")
-                       #img(src = "Rplot01.png", height = "100%", width ="100%"))
-                 ),
+                       #img(src = "Rplot01.png", height = "100%", width ="100%")
+                     ),
            tabPanel("Parallel Coordinate Plot",hr(),
                     headerPanel("Parallel Coordinate Matrix"),
                     plotOutput("plot3"),width ="100%",height ="800px",br(),hr()
                     ),
-           tabPanel("Bar Plot")
-))
+           tabPanel("Bubble Plot",hr(),
+                    headerPanel("Economic Freedom World Rank"),
+                    plotOutput("plot4"),width="100%",height="100%",br(),hr()
+                    )
+
+  ))
 
              
 
