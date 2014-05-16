@@ -36,7 +36,9 @@ There are 4 types of Visualizations
 ###Scatter Plot ###
 ---------------------------------------------
 
-![scatterplot](scatterplot.png)
+![scatterplot](scatter1.png)
+![scatterplot](scatter2.png)
+![scatterplot](scatter3.png)
 By using `shiny`package, I am able to put my data into function and pass it to plot. Here are the changes I made :
 - use `geom_point()` for the base plot,set `jitter` to avoid overlap, 
 - `geom_text()` to add Country Name for the scatters, set `jitter`avoid overlap.
