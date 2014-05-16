@@ -38,11 +38,13 @@ shinyUI(
                       ),
                       br()
                       ),hr()),
-            tabPanel("Scatter Plot Matrix",
-                     headerPanel("ScatterPlot Matrix"),
-                     plotOutput("plot2")
-                       #img(src = "Rplot01.png", height = "100%", width ="100%")
-                     ),
+#             tabPanel("Scatter Plot Matrix",
+#                      headerPanel("ScatterPlot Matrix"),
+#                      plotOutput("plot2")
+#                        #mainPanel(
+#                          #img(src = "Rplot.png", height = 400, width =400)
+#                        #)
+#                      ),
            tabPanel("Parallel Coordinate Plot",hr(),
                     headerPanel("Parallel Coordinate Matrix"),
                     plotOutput("plot3"),width ="100%",height ="800px",br(),hr()

@@ -56,8 +56,8 @@ getPlot<- function(df, Highlight, yUI){
   p <- ggplot(subset,aes_string(x = "GDPcapita",y = yUI,color = "Region"))
   p <- p + geom_point (alpha= 0.8,position = 'jitter') +labs("Region")+ xlab("GDP Per Capita in Thousand")+ ylab("Freedom Score out of 100")
   p <- p + geom_text(aes(label=Name,color=Region),size =4,position="jitter", hjust= 0.5,vjust=0)
-  anontateText<-paste("")
-  p <- p + annotate("text", x = 500, y = 4,hjust = 0.5,alpha=0.8, color = "grey40", size=4,label = anontateText)
+  anontateText<-paste("2014 Economic Freedom")
+  p <- p + annotate("text", x = 5000, y = 100,hjust = 0.5,alpha=0.6,size = 8, color = "grey40", size=4,label = anontateText)
   p <- p+ scale_size_discrete(guide ='none')+
   scale_fill_discrete(name="Country Regions")
 
@@ -157,7 +157,7 @@ getPara <- function(){
   #p <- p + guides(colour = guide_legend(override.aes =list(size = 4)))
   # Darken vertical lines
   p <- p + theme(panel.grid.major.x = element_line(color = "#bbbbbb"),
-                 axis.title= element_text(size=16,face="bold"),
+ #                axis.title= element_text(size=16,face="bold"),
                  plot.title=element_text(size=18, face="bold"))
   
   # Move label to bottom
@@ -165,63 +165,66 @@ getPara <- function(){
   palette<-brewer_pal(type="qual",palette="Set1")(6)
   p<-p+scale_color_manual(values=palette) 
   p<-p+geom_point(size=2)
-  #p<-p+labs(title="Parallel Coordinate Matrix")
+  #p<-p+labs(title="Parallel Coordinate Matrix")+
+
   
   return(p)
 }
 
 ### scatter plot matrix
-getScatter <- function(){
-  
-  region_palette <- brewer_pal(palette='Paired')(6)
-p <- ggpairs(mydata,
-             #coloumns include in matrix
-             columns = c("PopinM","GDPinB","Inflation","GDPcapita","FDIInflowM"),
-             legends= F,
-             #upper blank
-             upper=list(continuous="cor"),
-             # What to include below diagonal
-             lower = list(continuous = "smooth"),
-             # What to include in the diagonal
-             diag=list(continuous="density"), 
-             # Other aes() parameters
-             axisLabels ="none",
-             title = "Scatterplot Matrix",
-             colour ="Region",
-             params=list(corSize=1)
-)
-
-# Remove grid from plots along diagonal
-for (i in 1:5) {
-  for(j in 1:5){
-    # Get plot out of matrix
-    inner <- getPlot(p, i, j)
-    inner = inner + theme_bw()
-    inner = inner + theme(panel.grid.major = element_line(color = "grey90"),
-                          panel.background = element_rect(fill = NA),
-                          legend.key= element_rect(fill = "Black"))
-    inner <- inner + scale_color_manual(values=region_palette)
-    # Add any ggplot2 settings you want
-    #inner = inner + theme(panel.grid = element_blank())
-    #inner <- inner + theme(axis.ticks=element_blank())
-    inner = inner + theme(panel.grid.major = element_line(color = "grey90"),
-                          panel.background = element_rect(fill = NA))
-    #inner <- inner + theme(axis.title.y=element_blank()) 
-    inner <- inner + theme(axis.text=element_blank())
-    inner <- inner + theme(panel.grid.minor = element_blank()) 
-    #inner <- inner + theme(panel.border = element_blank())
-    inner <- inner + theme(panel.background= element_blank(),
-                           axis.title= element_text(size=16,face="bold"),
-                           plot.title=element_text(size=20, face="bold"))
-    
-    
-    
-    # Put it back into the matrix
-    p <- putPlot(p, inner, i, j)
-  }
-}
-  return(p)
-}
+# getScatter <- function(){
+#   df <- mydata
+#   region_palette <- brewer_pal(palette='Paired')(6)
+# p <- ggpairs(df,
+#              #coloumns include in matrix
+#              columns = c("PopinM","GDPinB","Inflation","GDPcapita","FDIInflowM"),
+#              legends= F,
+#              #upper blank
+#              upper ="blank",
+#              #upper=list(continuous="cor"),
+#              # What to include below diagonal
+#              #lower = list(continuous = "smooth"),
+#              # What to include in the diagonal
+#              #diag=list(continuous="density"), 
+#              # Other aes() parameters
+#              axisLabels ="none",
+#              title = "Scatterplot Matrix",
+#              colour ="Region"
+#              #,
+#              #params=list(corSize=1)
+# )
+# 
+# # Remove grid from plots along diagonal
+# for (i in 1:5) {
+#   for(j in 1:5){
+#     # Get plot out of matrix
+#     inner <- getPlot(p, i, j)
+#     inner = inner + theme_bw()
+#     inner = inner + theme(panel.grid.major = element_line(color = "grey90"),
+#                           panel.background = element_rect(fill = NA),
+#                           legend.key= element_rect(fill = "Black"))
+#     inner <- inner + scale_color_manual(values=region_palette)
+#     # Add any ggplot2 settings you want
+#     #inner = inner + theme(panel.grid = element_blank())
+#     #inner = inner + theme(axis.ticks=element_blank())
+#     inner = inner + theme(panel.grid.major = element_line(color = "grey90"),
+#                           panel.background = element_rect(fill = NA))
+#     #inner = inner + theme(axis.title.y=element_blank()) 
+#     inner = inner + theme(axis.text=element_blank())
+#     inner = inner + theme(panel.grid.minor = element_blank()) 
+#     #inner <- inner + theme(panel.border = element_blank())
+#     inner = inner + theme(panel.background= element_blank(),
+#                            axis.title= element_text(size=16,face="bold"),
+#                            plot.title=element_text(size=20, face="bold"))
+#     
+#     
+#     
+#     # Put it back into the matrix
+#     p <- putPlot(p, inner, i, j)
+#   }
+# }
+#   return(p)
+# }
 
 
 ## Bubble Plot
@@ -258,9 +261,7 @@ getBubble <- function(){
   #p <- p + coord_fix(ratio=1)
   # Modify the labels
   #p <- p + ggtitle("Economic Freedom World Rank ")
-  p <- p + labs(
-    size = "Population in Millions")+
-    xlab("Inflation Rate for Each Region")+
+  p <- p + xlab("Inflation Rate for Each Region")+
     ylab("Economic Freedom World Rank")
   
   p <- p + theme_minimal()
@@ -332,11 +333,11 @@ getyUI <- reactive({
 width = 1300,
 height = 1300)
 
-output$plot2<- renderPlot({
-  q<- getScatter(
-    )
-  print(q)
-})
+# output$plot2<- renderPlot({
+#   q<- getScatter(
+#     )
+#   print(q)
+# })
 
 output$plot3 <- renderPlot({
   p1<- getPara(

@@ -44,7 +44,7 @@ region_palette <- brewer_pal(palette='Paired')(6)
 
 p <- ggpairs(mydata,
               #coloumns include in matrix
-              columns = c("PopinM","GDPinB","Inflation","GDPcapita","FDIInflowM"),
+              columns = c("PopinM","GDPinB","Inflation","GDPGRate","GDPcapita","FDIInflowM"),
               legends= F,
               #upper blank
               upper=list(continuous="cor"),
@@ -60,8 +60,8 @@ p <- ggpairs(mydata,
                )
 
 # Remove grid from plots along diagonal
-for (i in 1:5) {
-  for(j in 1:5){
+for (i in 1:6) {
+  for(j in 1:6){
   # Get plot out of matrix
   inner <- getPlot(p, i, j)
   inner = inner + theme_bw()
@@ -80,7 +80,7 @@ inner <- inner + theme(panel.grid.minor = element_blank())
 #inner <- inner + theme(panel.border = element_blank())
 inner <- inner + theme(panel.background= element_blank(),
           axis.title= element_text(size=16,face="bold"),
-          plot.title=element_text(size=20, face="bold"))
+          plot.title=element_text(size=18, face="bold"))
   
   
 
