@@ -62,7 +62,10 @@ Types of interactivity:
 - Rationbutton()
 - checkboxgroupinput()
 
+checkbox group input = Asia Pacific
 ![inter1](inter1.png)
+
+checkbox group input= Asia Pacific & Europe
 ![inter2](inter2.png)
 To display the relationships between my X-Axis, "GDP Per Capita in Thousands", I put 6 different Economicc Freedom Indicators as Y -Axis, including for `checkboxgroupinput()` , they are : Freedom from Corruption, Fiscal Freedom, Business Freedom, Investment Freedom, Financial Freedom. by picking each different input, the plot will change too, it brings more information from the dataset to my visualiztion, and give the user a chance to see the performance under different Freedom levels, for comparison under same regions,that would be able to find different clusters under different freedom levels,  and find relationship and could see the movement of data under the choices
 
